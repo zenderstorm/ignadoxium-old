@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Overlock:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=LXGW+Marker+Gothic&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+
+<style>
+html {scroll-behavior:smooth;}
+
+body {user-select:none;}
+:root {
+	--offwhite: #F7F7F7;
+    --offblack: #171717;
+    --namesize: 16px;
+    --dialogsize: 15px;
+	--outpadding:9px;
+	--mainpadding: 5px;
+    --mainfont: BIZ UDGothic;
+    --mainborder: 1px solid var(--offwhite); 
+    --leftMinWidth: 300px;
+    --leftMaxWidth: 27vw;
+    --animationAppear: appear 200ms ease-in;
+    
+    --meringipfp: url(https://cdnb.artstation.com/p/assets/images/images/096/876/843/large/zenderstorm-welcome-back-akrizon.webp?1772552527); --meringifont: Roboto Mono;
+
+    --dayaspfp: url(https://i.ibb.co/zWWrtjkp/image-2026-07-08-010212360.png); --dayasfont: LXGW Marker Gothic;
+    
+    --zaspfp: url(https://github.com/zenderstorm/ignadoxium-old/blob/main/image_2026-07-08_223930317.png?raw=true); --zasfont: Oswald;
+    
+    --dynapfp: url(https://github.com/zenderstorm/ignadoxium-old/blob/main/dynamus%20pfp.gif?raw=true); --dynafont: Kode Mono;
+
+}
+
+::-webkit-scrollbar{display:none;}
+body {overflow-X:clip; background-color:black;}
+
+.layerLoadIn {background-color:black; color:var(--offwhite); opacity:0%; z-index:200000; position:absolute; top:0; bottom:0; left:0; right:0; width:100vw; height:100vh; animation: loadIn 1.5s  linear; letter-spacing:33%; font-family:var(--mainfont); font-size:var(--dialogsize); display:flex; justify-content:center; align-items:center; pointer-events:none;}
+
+.layerTop {background-image:url("https://github.com/zenderstorm/ignastuff/blob/main/the_intercognizant.gif?raw=true");position:absolute; z-index:10000; height:100vh; width:100vw; top:0; left:0; background-size:cover; background-position:center right; background-blend-mode:overlay; opacity:7.3%; pointer-events:none; }
+
+.name-box {padding:var(--mainpadding); background-color:var(--offblack); color:var(--offwhite); font-family: BIZ UDMincho; letter-spacing:33%; font-size:var(--namesize); display:block; border-bottom:var(--mainborder); margin-bottom:var(--mainpadding);}
+
+.dialog-box {border:var(--mainborder); background-color:#00000000; color:var(--offwhite); text-wrap:wrap; word-wrap:break-word; font-size: var(--dialogsize); min-width:20%;max-width:100%; animation: var(--animationAppear); cursor:pointer;margin-bottom:5px; /*?????*/ display:none; font-family:var(--mainfont);}
+
+.dialog-box:hover {transform:scale(100.7%)}
+.dialog-box:active {transform:scale(97.7%)}
+
+.dialog-box + .actionAvailable {padding:var(--mainpadding);}
+
+.splashText {z-index:10000; transform:scale(100%)}
+.splashText:hover {transform:scale(103%)}
+.splashText:active{transform:scale(97.7%)}
+
+.pfp-box {float:left; border-right:var(--mainborder); margin-right:var(--mainpadding); height:100px; width:100px; overflow:hidden; background-size:cover;}
+
+.leftsection {min-width:var(--leftMinWidth); max-width:var(--leftMaxWidth); width:100%; background-color:var(--offblack); border-right:var(--mainborder); position:absolute; top:0; bottom:0;left:0; overflow-x:clip; overflow-y:scroll; padding:var(--outpadding); display:flex; flex-direction:column; gap:var(--mainpadding); text-wrap:wrap; overflow-anchor:auto; background-image:url(https://images.pexels.com/photos/30501903/pexels-photo-30501903.jpeg); background-position:center center; background-size:cover; background-blend-mode:overlay;z-index:100;}
+.leftsection:hover {}
+
+.centresection {background-color:var(--offblack); z-index:0; top:0; bottom:0; left:var(--leftMinWidth); right:0;  height:100vh; position:absolute; overflow-y:hidden; overflow-x:scroll;}
+
+.bottomsection {height:3vh; width:100vw; border-top:var(--mainborder); background-color:var(--offblack); bottom:0; right:0; position:absolute; z-index:99; display:flex; padding:var(--mainpadding); justify-content:right; font-family:var(--mainfont); font-size: var(--dialogsize); color:var(--offwhite); align-items:center;}
+
+.bottomNav {cursor:pointer;}
+.bottomNav:hover {text-decoration:underline;}
+
+.search {opacity:0%; transition:opacity 100ms ease-in; background-color:rgb(0,0,0,0); position:absolute; border: var(--mainborder); display:flex; justify-content:right; align-items:end; font-family:var(--mainfont); padding:0; color:var(--offwhite);}
+
+.search:hover {opacity:100%; transition:opacity 200ms ease-in;}
+
+#d1 {display:block;}
+
+.searchInfo {background-color:var(--offblack); border-top:var(--mainborder); border-left:var(--mainborder); display:inline; padding:var(--mainpadding); max-width:73%; word-wrap:break-word;}
+
+@keyframes appear {
+0% {opacity:0%; transform:translateX(-30px)}
+90% {transform:translateX(3px)}
+100% {opacity: 100%; transform:translateX(0px)}
+}
+
+@keyframes loadIn {
+0% {opacity:100%; pointer-events:auto;}
+70% {opacity:100%;}
+100% {opacity:0%; pointer-events:none;}
+}
+
+@keyframes floaty {
+0% {transform:translateY(0)}
+50% {transform:translateY(-5px)}
+100% {transform:translateY(0)}
+}
+
+</style>
+</head>
+<body onclick="playClick();">
+<audio id="bg" loop>
+  <source src="https://github.com/zenderstorm/ignadoxium-old/raw/refs/heads/main/gyskurancci.ogg" type="audio/ogg">
+  [[ Your browser does not support the audio element. ]]
+</audio>
+
+<audio id="click">
+  <source src="https://github.com/zenderstorm/ignadoxium-old/raw/refs/heads/main/click3.mp3" type="audio/mp3">
+  [[ Your browser does not support the audio element. ]]
+</audio>
+
+<div class="layerLoadIn">[[ DEDICATE ]] success!<br><br>DEJALOG: Space Mahjong</div>
+<div class="layerTop"></div>
+<div class="leftsection">
+
+<div id="d1" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dayasfont);">
+<div class="pfp-box" style="background-image:var(--dayaspfp);"></div>
+	<div class="name-box" >
+DAYAS-KP304
+    </div>
+N U L L D / N U L L D / N U L L D
+</div>
+
+<div id="d2" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dayasfont);">
+<div class="pfp-box" style="background-image:var(--dayaspfp);"></div>
+	<div class="name-box" >
+DAYAS-KP304
+    </div>
+I I W A S / J U S T T / C U R I I / O U U S S / I M S R Y 
+	</div>
+
+<div id="d3" onclick="clicknew(this.id); playBg();" class="dialog-box actionAvailable" style="font-family: var(--mainfont);">
+SEARCH AVAILABLE!<br>
+<div style="font-family:var(--dayasfont); text-decoration:underline;">
+<br>› T H A T T / T H I N G / L O O K D / C O O L L</div>
+</div>
+
+<div id="d6" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dayasfont);">
+<div class="pfp-box" style="background-image:var(--dayaspfp);"></div>
+	<div class="name-box" >
+DAYAS-KP304
+    </div>
+I T W A S / B L L U E<br><br>
+A N D I A / M B L U E
+</div>
+    
+
+<div id="d7" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dayasfont);">
+<div class="pfp-box" style="background-image:var(--dayaspfp);"></div>
+	<div class="name-box" >
+DAYAS-KP304
+    </div>
+P L E A S / A C T I V : N U L L D / K I L M E
+</div>
+
+
+<div id="d9" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dynafont);">
+<div class="pfp-box" style="background-position:top 0px right -10px; background-image:var(--dynapfp); "></div>
+	<div class="name-box" >
+???????
+    </div>
+Hello
+</div>
+
+<div id="d10" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dayasfont);">
+<div class="pfp-box" style="background-image:var(--dayaspfp);"></div>
+	<div class="name-box" >
+DAYAS-KP304
+    </div>
+A A A A A / A A H H H / H H H H H
+</div>
+
+<div id="d11" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dynafont);">
+<div class="pfp-box" style="background-position:top 0px right -10px; background-image:var(--dynapfp); "></div>
+	<div class="name-box" >
+???????
+    </div>
+?? 
+</div>
+
+<div id="d12" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dynafont);">
+<div class="pfp-box" style="background-position:top 0px right -10px; background-image:var(--dynapfp); "></div>
+	<div class="name-box" >
+???????
+    </div>
+What's happening?? Why are we yelling??
+</div>
+
+<div id="d13" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dayasfont);">
+<div class="pfp-box" style="background-image:var(--dayaspfp);"></div>
+	<div class="name-box" >
+DAYAS-KP304
+    </div>
+Y O U R E<br>
+Y O U R E 
+</div>
+
+<div id="d14" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dayasfont);">
+<div class="pfp-box" style="background-image:var(--dayaspfp);"></div>
+	<div class="name-box" >
+DAYAS-KP304
+    </div>
+Q U E R Y : Q U E R Y : Q U E R Y : W H Y D O / Y O U U L / O O K S O
+</div>
+
+<div id="d15" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dayasfont);">
+<div class="pfp-box" style="background-image:var(--dayaspfp);"></div>
+	<div class="name-box" >
+DAYAS-KP304
+    </div>
+R E N N D / E R R E D
+</div>
+
+
+<div id="d16" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dynafont);">
+<div class="pfp-box" style="background-position:top 0px right -10px; background-image:var(--dynapfp); "></div>
+	<div class="name-box" >
+???????
+    </div>
+Oh
+</div>
+
+<div id="d17" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dynafont);">
+<div class="pfp-box" style="background-position:top 0px right -10px; background-image:var(--dynapfp); "></div>
+	<div class="name-box" >
+????
+    </div>
+It's because [[ they ]] don't want to draw any new splash art...
+</div>
+
+<div id="d18" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dynafont);">
+<div class="pfp-box" style="background-position:top 0px right -10px; background-image:var(--dynapfp); "></div>
+	<div class="name-box" >
+???????
+    </div>
+So they're reusing a bunch of assets.
+</div>
+
+<div id="d19" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dayasfont);">
+<div class="pfp-box" style="background-image:var(--dayaspfp);"></div>
+	<div class="name-box" >
+DAYAS-KP304 (still doesnt get it)
+    </div>
+O H H O K
+</div>
+
+<div id="d20" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dynafont);">
+<div class="pfp-box" style="background-position:top 0px right -10px; background-image:var(--dynapfp); "></div>
+	<div class="name-box" >
+???????
+    </div>
+Sooo what do you got there? A mahjong tile? Are you helping Maya win th-
+</div>
+
+<div id="d21" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dayasfont);">
+<div class="pfp-box" style="background-image:var(--dayaspfp);"></div>
+	<div class="name-box" >
+DAYAS-KP304
+    </div>
+A L E R T : S S H H H / H H H H H / O H H M Y / G G O D D 
+</div>
+
+<div id="d20" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dynafont);">
+<div class="pfp-box" style="background-position:top 0px right -10px; background-image:var(--dynapfp); "></div>
+	<div class="name-box" >
+???????
+    </div>
+??? Sorry! Sorry.
+</div>
+
+<div id="d21" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dayasfont);">
+<div class="pfp-box" style="background-image:var(--dayaspfp);"></div>
+	<div class="name-box" >
+DAYAS-KP304
+    </div>
+I F S H E / F I N D S / O U U T T / T H A T I / T O O K K / I I T T T 
+</div>
+
+<div id="d22" onclick="clicknew(this.id)" class="dialog-box" style="font-family:var(--dayasfont);">
+<div class="pfp-box" style="background-image:var(--dayaspfp);"></div>
+	<div class="name-box" >
+DAYAS-KP304
+    </div>
+A L E R T : A L E R T : S H E S S / G O I N 2 / K I L M E / O N G O D 
+</div>
+
+<div id="d23" onclick="clicknew(this.id); moveDayasMaya1();" class="dialog-box" style="font-family:var(--dynafont);">
+<div class="pfp-box" style="background-position:top 0px right -10px; background-image:var(--dynapfp); "></div>
+	<div class="name-box" >
+???????
+    </div>
+Even if it was a mistake? I'm sure you didn't take it on purpose...
+</div>
+
+</div> <!--left section div end-->
+
+<!--pseudo navigation-->
+<div class="bottomsection">
+<span>DEJALOG:&nbsp</span> 
+<span id="bottomShow0" onclick="goToPrevDeja(this.id)">
+	<span class="bottomNav">Space Mahjong</span>&nbsp
+</span>
+<span id="bottomShow1">
+	/ <span class="bottomNav">Dayas what are you doing!!</span>
+</span>
+</div>
+
+<div class="centresection"  id="d4" 
+        style="display:none; animation: appear 400ms ease-in;">
+	<div> <!--scroller div start-->
+    	<div> <!--for the d function start-->
+    		<div class="search" id="searchDayas" style="height:23vh; width:21vh; left:28vh; top:62vh;" onclick="clicknew(this.parentNode.parentNode.parentNode.id); bottomShow(this.id)"> <!--use units that are "unchanged"; in this case it's vh-->
+        	<span class="searchInfo";>What are you doing!! Dayas!!</span>
+            </div>
+        </div> <!--for the d function end-->
+        	<div class="search" style="height:23vh; width:15vh; left:130vh; top:9vh;"> <!--use units that are "unchanged"; in this case it's vh-->
+        	<span class="searchInfo";>They'll be over in a bit...</span>
+            </div>
+	<img src="https://github.com/zenderstorm/ignadoxium-old/blob/main/minimechafest%20supersmall.gif?raw=true" style="position:absolute; height:100vh; top:0; bottom:0; z-index:-1000; ">
+	</div> <!--scroller div end-->
+</div> <!--centre section div end-->
+
+<div class="centersection" id="d5" style="display:none; position:absolute; top:0; bottom:0; width:100%; background-color:rgba(0, 0, 0, 0.6); animation: appear 200ms ease-in; transition:transform 500ms;">
+
+	<div id="splash1" onclick="clicknew(this.parentNode.id); hideBox(this.id);" class="splashText name-box" style="position:absolute; display:inline-block; top:30vh; left:65vh; text-align:center; min-width:0; border:var(--mainborder)">"..."</div>
+	<img src="https://github.com/zenderstorm/ignadoxium-old/blob/main/dayas-splash-temp.png?raw=true" style="position:absolute; width:50vh; height:70vh;left:60vh; bottom:1px; object-fit:cover; object-position:center top; animation: floaty 2s ease-in-out infinite; filter:drop-shadow(0px 0px 10px #87C3FF90);">
+</div>
+
+<div class="centersection" id="d8" style="display:none; position:absolute; top:0; bottom:0; animation: appear 200ms ease-in; ">
+    	<div id="splash2" onclick="clicknew(this.parentNode.id); hideBox(this.id);" class="splashText name-box" style="position:absolute; display:inline-block; top:15vh; left:105vh; text-align:center; min-width:0; border:var(--mainborder)">"..."</div>
+    	<img src="https://github.com/zenderstorm/ignadoxium-old/blob/main/dyanmus.png?raw=true" style="position:absolute; width:70vh; height:90vh;left:115vh; bottom:1px; object-fit:cover; object-position:center top; animation: floaty 4s ease-in-out infinite; filter:drop-shadow(0px 0px 10px #000000D6);"></div>
+</div>
+
+
+<script>
+var m1 = document.getElementById("bg")
+function playBg() { 
+  m1.volume = 0.07;
+  m1.play(); 
+} 
+
+var m2 = document.getElementById("click")
+function playClick() { 
+  m2.volume = 0.02; 
+  m2.playbackRate = 3.0;
+  m2.load();
+  m2.play(); 
+} 
+
+function clicknew(n) { 
+// let n = "d1"; name of div, "this.id". comment this out
+let p = n.slice(1); // this removes the "d" (ALL BOX IDS NEED TO START WITH D)
+let q = Number(p) + 1;
+const boxId = ["d", q]; //new id name
+let r = boxId.join("");
+document.getElementById(r).style.display = "block";
+
+const loc = ["#", r];
+let s = loc.join("");
+location.href = s;
+}
+
+function hideBox(w) {
+document.getElementById(w).style.display = "none";
+}
+
+function showBox() {
+	const splashBoxes = ["splash1", "splash2"]
+	for (let i = 0; i < splashBoxes.length; i++) {
+document.getElementById(splashBoxes[i]).style.display = "block"
+	}
+}
+
+var btm1 = document.getElementById("bottomShow1")
+btm1.style.display = "none";
+function bottomShow(f) {
+	if (f === "searchDayas") {
+	document.getElementById("bottomShow1").style.display = "inline";
+    showBox();
+	}
+}
+
+function goToPrevDeja(j) {
+	if (j === "bottomShow0") {
+		const dialogueHideDayas = ["bottomShow1", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14", "d15", "d16", "d17", "d18", "d19", "d20", "d21", "d22", "d23", ] //MORE
+		for (let i = 0; i < dialogueHideDayas.length; i++) {
+document.getElementById(dialogueHideDayas[i]).style.display = "none";
+		}
+	}
+}
+</script>
+
+</body>
+</html>
